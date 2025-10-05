@@ -1,0 +1,165 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        192
+      ],
+      "id": "9a24a9c4-445e-494e-940f-a94e0ec51ab0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "I1p4CjCeiN2laJSn",
+          "mode": "list",
+          "cachedResultName": "Data table feed",
+          "cachedResultUrl": "/projects/Lk2nykGLhSCkIhYE/datatables/I1p4CjCeiN2laJSn"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        832,
+        64
+      ],
+      "id": "445e1b74-84b9-4263-9037-1e9178477cc6",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techtalkthai.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        -48
+      ],
+      "id": "d98518e2-1414-47f5-8eb4-a778f1e3b369",
+      "name": "techtalkthai"
+    },
+    {
+      "parameters": {
+        "url": "https://droidsans.com/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        112
+      ],
+      "id": "87d2b8b4-225b-40f8-b1df-e427c267637b",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "url": "https://www.srtet.co.th/rss/news",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        288
+      ],
+      "id": "ed15933d-a553-46cc-8899-67e6c81291aa",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {
+        "url": "https://www.nso.go.th/nsoweb/main/rssfeed/get_data/A",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        464
+      ],
+      "id": "758f895a-851a-4175-9666-8b5396e4696e",
+      "name": "RSS Read2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "techtalkthai",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "techtalkthai": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read2": {
+      "main": [
+        []
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        []
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5c8de19a-fe75-484a-b381-1b204d021939",
+  "meta": {
+    "instanceId": "395c2bdc0c0519ed621320f651e6dc8ca027ab369dd81a6a0fc3f101a10553fd"
+  },
+  "id": "95PrZxxSWjkFkuZJ",
+  "tags": []
+}
