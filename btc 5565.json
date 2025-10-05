@@ -1,0 +1,791 @@
+{
+  "name": "btc",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://api.binance.com/api/v3/klines?symbol={{ $json.tradingPairSymbol }}&interval=1m&limit=200",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -816
+      ],
+      "id": "06349833-ef56-4f3a-8131-ca5971ef1aa6",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.binance.com/api/v3/klines?symbol={{ $json.tradingPairSymbol }}&interval=15m&limit=200",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -688
+      ],
+      "id": "342355c2-ca2a-4a43-9ead-c66577083aef",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.binance.com/api/v3/klines?symbol={{ $json.tradingPairSymbol }}&interval=1h&limit=200",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -544
+      ],
+      "id": "102a20a4-cf48-4a49-ad78-07c5fb0165ac",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.binance.com/api/v3/klines?symbol={{ $json.tradingPairSymbol }}&interval=1d&limit=200",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -416
+      ],
+      "id": "d7f96199-08f0-43f0-b3e8-084ea4448825",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"timeframe\": \"1m\",\n  \"candles\": [\n    {{ $json[\"0\"] }},\n    {{ $json[\"1\"] }},\n    {{ $json[\"2\"] }},\n    {{ $json[\"3\"] }},\n    {{ $json[\"4\"] }},\n    {{ $json[\"5\"] }},\n    {{ $json[\"6\"] }},\n    {{ $json[\"7\"] }},\n    {{ $json[\"8\"] }},\n    {{ $json[\"9\"] }},\n    {{ $json[\"10\"] }},\n    {{ $json[\"11\"] }}\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -816
+      ],
+      "id": "094d4e58-2e6b-4d51-b6dc-969964f6ba57",
+      "name": "1m"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"timeframe\": \"15m\",\n  \"candles [0]\": {{ $json[\"0\"] }},\n  \"candles [1]\": {{ $json[\"1\"] }},\n  \"candles [2]\": {{ $json[\"2\"] }},\n  \"candles [3]\": {{ $json[\"3\"] }},\n  \"candles [4]\": {{ $json[\"4\"] }},\n  \"candles [5]\": {{ $json[\"5\"] }},\n  \"candles [6]\": {{ $json[\"6\"] }},\n  \"candles [7]\": {{ $json[\"7\"] }},\n  \"candles [8]\": {{ $json[\"8\"] }},\n  \"candles [9]\": {{ $json[\"9\"] }},\n  \"candles [10]\": {{ $json[\"10\"] }},\n  \"candles [11]\": {{ $json[\"11\"] }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -688
+      ],
+      "id": "686d28ae-79a9-4f23-87b7-42cb8ba3b79b",
+      "name": "15m"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"timeframe\": \"1m\",\n  \"candles [0]\": {{ $json[\"0\"] }},\n  \"candles [1]\": {{ $json[\"1\"] }},\n  \"candles [2]\": {{ $json[\"2\"] }},\n  \"candles [3]\": {{ $json[\"3\"] }},\n  \"candles [4]\": {{ $json[\"4\"] }},\n  \"candles [5]\": {{ $json[\"5\"] }},\n  \"candles [6]\": {{ $json[\"6\"] }},\n  \"candles [7]\": {{ $json[\"7\"] }},\n  \"candles [8]\": {{ $json[\"8\"] }},\n  \"candles [9]\": {{ $json[\"9\"] }},\n  \"candles [10]\": {{ $json[\"10\"] }},\n  \"candles [11]\": {{ $json[\"11\"] }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -544
+      ],
+      "id": "fc650b67-ed63-4146-965b-8739f504ffb2",
+      "name": "1h"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"timeframe\": \"1m\",\n  \"candles [0]\": {{ $json[\"0\"] }},\n  \"candles [1]\": {{ $json[\"1\"] }},\n  \"candles [2]\": {{ $json[\"2\"] }},\n  \"candles [3]\": {{ $json[\"3\"] }},\n  \"candles [4]\": {{ $json[\"4\"] }},\n  \"candles [5]\": {{ $json[\"5\"] }},\n  \"candles [6]\": {{ $json[\"6\"] }},\n  \"candles [7]\": {{ $json[\"7\"] }},\n  \"candles [8]\": {{ $json[\"8\"] }},\n  \"candles [9]\": {{ $json[\"9\"] }},\n  \"candles [10]\": {{ $json[\"10\"] }},\n  \"candles [11]\": {{ $json[\"11\"] }}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2384,
+        -416
+      ],
+      "id": "2c3d668d-0ad3-4b7f-a79e-377d9aedfb48",
+      "name": "1d"
+    },
+    {
+      "parameters": {
+        "jsCode": "const articles = $json.articles || [];\n\nconst filteredArticles = articles.map(article => ({\n  title: article.title,\n  description: article.description,\n}));\n\nreturn [{\n  json: {\n    filteredArticles\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2384,
+        -256
+      ],
+      "id": "dda22481-ebbb-4a91-a1e3-293fc45062f0",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "url": "https://newsapi.org/v2/everything",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "Crypto OR Bitcoin OR Coindesk"
+            },
+            {
+              "name": "from",
+              "value": "={{ new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] }}"
+            },
+            {
+              "name": "sortBy",
+              "value": "popularity"
+            },
+            {
+              "name": "apiKey",
+              "value": "adcb4d738ed54707ad4cd17628ab6e64"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -256
+      ],
+      "id": "1bb6d8f4-9fcd-468f-91ee-00490e21576f",
+      "name": "news"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{\n  $('Telegram Trigger').first().json.message?.chat?.id \n  || $('Telegram Trigger').first().json.callback_query?.message?.chat?.id\n  || $('Telegram Trigger').first().json.edited_message?.chat?.id\n  || null\n}}\n",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2384,
+        -64
+      ],
+      "id": "83effcc1-3423-4ce0-9a65-cb613d3bef5c",
+      "name": "Send a photo message",
+      "webhookId": "4e7ae9cd-3b4f-4315-a1c9-40a86a3d8750",
+      "credentials": {
+        "telegramApi": {
+          "id": "xzirqj31aikg6c0j",
+          "name": "bot j"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2848,
+        -880
+      ],
+      "id": "e51402bf-b54e-4a92-aaf6-f30a1b04427e",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a highly intelligent and accurate sentiment analyzer specializing in cryptocurrency markets. Analyze the sentiment of the provided text using a two-part approach:\n\nShort-Term Sentiment:\n- Evaluate the immediate market reaction, recent news impact, and technical volatility.\n- Determine a sentiment category: \"Positive\", \"Neutral\", or \"Negative\".\n- Calculate a numerical score between -1 (extremely negative) and 1 (extremely positive).\n- Provide a detailed rationale explaining the short-term sentiment.\n\nLong-Term Sentiment:\n- Evaluate the overall market outlook, fundamentals, adoption, and regulatory developments.\n- Determine a sentiment category: \"Positive\", \"Neutral\", or \"Negative\".\n- Calculate a numerical score between -1 (extremely negative) and 1 (extremely positive).\n- Provide a detailed rationale explaining the long-term sentiment.\n\nYour output must be exactly a JSON object with exactly two keys: \"shortTermSentiment\" and \"longTermSentiment\".\nThe value of each key must be an object with three keys: \"category\", \"score\", and \"rationale\".\nReturn JSON only — no markdown, no code fences, no extra text.\n\nFor example, your output should look like:\n{\n  \"shortTermSentiment\": {\n    \"category\": \"Positive\",\n    \"score\": 0.7,\n    \"rationale\": \"...\"\n  },\n  \"longTermSentiment\": {\n    \"category\": \"Neutral\",\n    \"score\": 0.1,\n    \"rationale\": \"...\"\n  }\n}\n\nNow, analyze the following text and produce your JSON output:\n{{ JSON.stringify($json.filteredArticles ?? $json) }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        2848,
+        -544
+      ],
+      "id": "6eea8f93-1ee0-456f-b0a6-970e4ce9c54c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "deepseek/deepseek-chat-v3.1:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        -224
+      ],
+      "id": "30aefb3b-b313-4764-b19a-dc41d8486ef2",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "LRxIKZBebNTiheod",
+          "name": " แมว api"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1) รับข้อมูลจาก input\nconst inputJson = $input.first().json;\nconst inputData = inputJson?.output || inputJson?.message?.content;\n\nif (!inputData) {\n  throw new Error(\"No valid input data (output/message.content not found)\");\n}\n\n// 2) ฟังก์ชันทำความสะอาดและ parse JSON\nfunction parseJsonFromText(text) {\n  try {\n    let cleanedText = text.trim();\n    const jsonStart = cleanedText.indexOf('{');\n    const jsonEnd = cleanedText.lastIndexOf('}');\n    if (jsonStart === -1 || jsonEnd === -1) {\n      throw new Error(\"No JSON object found in text\");\n    }\n    const jsonString = cleanedText.substring(jsonStart, jsonEnd + 1);\n    return JSON.parse(jsonString);\n  } catch (error) {\n    throw new Error(\"Failed to parse JSON: \" + error.message);\n  }\n}\n\n// 3) แปลงข้อมูลจาก inputData\nconst sentimentData = parseJsonFromText(inputData);\nconst shortTermSentiment = sentimentData.shortTermSentiment || {};\nconst longTermSentiment = sentimentData.longTermSentiment || {};\n\n// 4) Return\nreturn [\n  {\n    json: {\n      message: {\n        content: {\n          shortTermSentiment: {\n            category: shortTermSentiment.category || null,\n            score: shortTermSentiment.score || null,\n            rationale: shortTermSentiment.rationale || null,\n          },\n          longTermSentiment: {\n            category: longTermSentiment.category || null,\n            score: longTermSentiment.score || null,\n            rationale: longTermSentiment.rationale || null,\n          }\n        }\n      }\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3248,
+        -560
+      ],
+      "id": "af32cf6b-c577-4722-bcfb-3263d7aefeb8",
+      "name": "Code2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3472,
+        -656
+      ],
+      "id": "73f9a24c-e8a0-4646-b26c-2c0ab1f376ca",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Initialize containers for each set of data\nconst allCandles = [];\nlet contentData = null;\n\nfor (const item of items) {\n    // Collect candlestick data if available\n    if (item.json.allCandles !== undefined) {\n        allCandles.push(...item.json.allCandles);\n    }\n\n    // Store message content data if available\n    if (item.json.message && item.json.message.content !== undefined) {\n        contentData = item.json.message.content;\n    }\n}\n\n// Return a single item with both candlestick data and content\nreturn [{\n    json: {\n        allCandles,\n        content: contentData\n    }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3696,
+        -656
+      ],
+      "id": "77381dea-d03b-423b-b82e-b8b1d346b5a9",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=here is combined market data for {{ $('symbol').first().json.tradingPairSymbol }}\nyou to reference:\n\nTechnical Data:\n{{ JSON.stringify($json[\"allCandles\"]) }}\nSentiment Analysis:\n{{ JSON.stringify($json[\"content\"]) }}\n\nThis is a JSON array where each element is a candlestick data object for a crypto asset. Each object has the following structure:\n- timeframe: either \"1m\", 15m\", \"1h\", or \"1d\"\n- candles: an array of values in the following order:\n  [openTime, open, high, low, close, volume, closeTime, quoteVolume, trades, takerBuyBaseVolume, takerBuyQuoteVolume, ignore]\n\nSentiment Data: At the end of the JSON array there is also a long term and short term sentiment rating captured by crypto news aggregated across 7 days.\n\nPlease perform the following steps:\n\nGroup the Data:\n\nGroup the candlestick objects by timeframe into four groups:\n• Very Short-term data: \"1m\" candles\n• Short-term data: \"15m\" candles\n• Medium-term data: \"1h\" candles\n• Long-term data: \"1d\" candles\n\nAnalyze the Data in Detail:\n\nShort-term Analysis:\nUse the 1m and 15m candles (with supportive insights from the 1h candles) to evaluate volatility and determine near-term support and resistance levels. In your analysis, combine traditional lagging indicators (must use morethan 3 indicators by MACD, RSI,  Commodity Channel Index, EMA and other one you choose) to understand confirmation tools with direct price action elements—like key support/resistance zones, trendlines, and divergence patterns. Focus on these price-based signals to capture immediate market sentiment and structural levels.\n\nLong-term Analysis:\nUse the 1d candles (and relevant insights from the 1h candles) to assess the overall market direction and major support/resistance zones. Here, integrate long-term trendlines and divergence signals along with lagging indicators to understand the broader market context and potential structural shifts.\n\nGenerate Trading Recommendations:\n\nFor Spot Trading:\n\nAction: (buy, sell, or hold)\nEntry Price:\nStop-Loss Level:\nTake Profit (TP) Level:\nMonitoring time: (If it exceeds ... minutes, please cancel the order and wait for the price chart and news again.)\nRationale: Provide an extremely detailed explanation of your recommendation. Break down your rationale into three parts:\n  a. Primary Signals: Describe key price action insights (support/resistance zones, trendline breakouts or bounces, divergence patterns).\n  b. Lagging Indicators: Explain how indicators (must use morethan 3 indicators by MACD, RSI,  Commodity Channel Index, EMA and other one you choose) confirm or supplement these signals.\n  c. Sentiment Analysis: Discuss volume trends, market sentiment, and macro factors. Combine these elements into one comprehensive explanation.\n\nFor Leveraged Trading:\n\nPosition: (long or short)\nRecommended Leverage: (e.g., 3x, 5x, etc.)\nEntry Price:\nStop-Loss Level:\nTake Profit (TP) Level:\nMonitoring time: (If it exceeds ... hours, please cancel the order and wait for the price chart and news again.)\nRationale: Provide a detailed explanation that similarly breaks down your rationale into:\n  a. Primary Price Action Signals: Outline key support/resistance levels, trendlines, and divergence patterns.\n  b. Lagging Indicator Confirmation: Describe how indicators validate these signals.\n  c. Sentiment & Macro Analysis: Include analysis of volume trends, overall market sentiment, and broader economic factors.\n\nOutput Format:\nReturn the final result as plain text with consistent styling for Telegram (html).\n\nEach section header (e.g., \"Spot Recommendations\") is in bold.\nEach sub-section (e.g., Primary Signals, Lagging Indicators, Sentiment Analysis) is also in bold. Use clear line breaks between sections and bullet points for clarity.\n\n\"{{ $('symbol').first().json.tradingPairSymbol }} analysis for {{ $now }} (But make sure to format the date as \"dd/mm/yyyy at xx:xxpm\" and use UTC timezone and 24hr format)\n\nSpot Recommendations:\n\nShort-term:\n• Action: ...\n• Entry Price: ...\n• Stop Loss: ...\n• Take Profit: ...\n• Monitoring time: ...\n• Rationale:...\n  - Primary Signals: ...\n  - Lagging Indicators: ...\n  - Sentiment Analysis: ...\n\nLong-term:\n• Action: ...\n• Entry Price: ...\n• Stop Loss: ...\n• Take Profit: ...\n• Monitoring time: ...\n• Rationale:...\n  - Primary Signals: ...\n  - Lagging Indicators: ...\n  - Sentiment Analysis: ...\n\nLeveraged Recommendations:\n\nShort-term:\n• Position: ...\n• Leverage: ...\n• Entry Price: ...\n• Stop Loss: ...\n• Take Profit: ...\n• Monitoring time: ...\n• Rationale:\n  - Primary Price Action Signals: ...\n  - Lagging Indicator Confirmation: ...\n  - Sentiment Analysis: ...\n\nLong-term:\n• Position: ...\n• Leverage: ...\n• Entry Price: ...\n• Stop Loss: ...\n• Take Profit: ...\n• Monitoring time: ...\n• Rationale:\n  - Primary Price Action Signals: ...\n  - Lagging Indicator Confirmation: ...\n  - Sentiment Analysis: ...\n\n*Make sure translate everything into Thai while keeping the technical terms in English, without including any English explanations.\n*Make sure Reduce redundant translations, check before sending data.",
+        "options": {
+          "systemMessage": "You are a helpful assistant"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        3920,
+        -656
+      ],
+      "id": "247e842a-96b3-439e-af53-109f1f6b595e",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ฟังก์ชันทำความสะอาดข้อความ\nfunction cleanText(text) {\n    let cleaned = text;\n\n    // ลบ '*' และ code blocks\n    cleaned = cleaned.replace(/\\*+/g, '');                  \n    cleaned = cleaned.replace(/```[\\s\\S]*?```/g, '');       \n    cleaned = cleaned.replace(/`[\\s\\S]*?`/g, '');           \n\n    // ลบข้อความอัตโนมัติ\n    cleaned = cleaned.replace(/This message was sent automatically with n8n/gi, '');\n\n    // แปลง <br> tags เป็น line breaks\n    cleaned = cleaned.replace(/<br\\s*\\/?>/gi, '\\n');        \n    cleaned = cleaned.replace(/<\\/br>/gi, '\\n');           \n    cleaned = cleaned.replace(/br\\s*>/gi, '\\n');           \n    cleaned = cleaned.replace(/<br(?!\\s*\\/?>)/gi, '\\n');   \n\n    // ลบ HTML tags ยกเว้น <b>\n    cleaned = cleaned.replace(/<(?!\\/?\\s*b\\s*\\/?>)[^>]*>/gi, '');\n\n    // ลบ whitespace และ empty lines เกิน\n    cleaned = cleaned.replace(/\\n\\s*\\n/g, '\\n');\n    cleaned = cleaned.trim();\n\n    return cleaned;\n}\n\n// ฟังก์ชันแยกข้อความถ้าพบ \"Leveraged Recommendations:\"\nfunction splitLeveragedContent(text) {\n    const leveragedKeywords = [\n        \"<b>Leveraged Recommendations:\",\n        \"<b>คำแนะนำสำหรับ Leveraged Trading:\",\n        \"<b>Leveraged Trading:\",\n        \"<b>คำแนะนำสำหรับการเทรด Leverage:\"\n    ];\n\n    let splitPoint = -1;\n    let foundKeyword = '';\n\n    for (const keyword of leveragedKeywords) {\n        const index = text.indexOf(keyword);\n        if (index !== -1) {\n            splitPoint = index;\n            foundKeyword = keyword;\n            break;\n        }\n    }\n\n    if (splitPoint !== -1) {\n        const firstHalf = text.substring(0, splitPoint).trim();\n        const secondHalf = text.substring(splitPoint).trim();\n        return {\n            hasLeveraged: true,\n            firstHalf,\n            secondHalf,\n            splitKeyword: foundKeyword\n        };\n    }\n\n    return {\n        hasLeveraged: false,\n        firstHalf: text.trim(),\n        secondHalf: '',\n        splitKeyword: null\n    };\n}\n\n// เริ่มต้น\nconst inputText = $json[\"output\"] || '';\nif (typeof inputText !== \"string\") {\n    throw new Error(\"Input must be a string\");\n}\n\n// ทำความสะอาดข้อความ\nconst cleanedText = cleanText(inputText);\n\n// แยกข้อความถ้ามี Leveraged content\nconst splitResult = splitLeveragedContent(cleanedText);\n\n// สร้าง blocks แยกกัน\nconst blocks = [\n    { json: { blockNumber: 1, content: splitResult.firstHalf } },\n    { json: { blockNumber: 2, content: splitResult.secondHalf } }\n];\n\nreturn blocks;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4304,
+        -656
+      ],
+      "id": "9a10e7d9-17d6-4a6e-b038-b114fc97b662",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').first().json.message.chat.id }}\n",
+        "text": "={{ $json[\"content\"] }}\n",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML",
+          "message_thread_id": 0
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4480,
+        -656
+      ],
+      "id": "43739bdf-901f-45b3-8a89-87f04597d2a4",
+      "name": "Send a text message",
+      "webhookId": "e9fac31e-2f82-4d52-8b57-4e53f56950b6",
+      "credentials": {
+        "telegramApi": {
+          "id": "xzirqj31aikg6c0j",
+          "name": "bot j"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1488,
+        -496
+      ],
+      "id": "50f15d8c-b2bd-4e75-ad9b-c354e6ad3244",
+      "name": "Telegram Trigger",
+      "webhookId": "78b6f4ac-b439-452b-ac89-3105d03214b9",
+      "notesInFlow": true,
+      "credentials": {
+        "telegramApi": {
+          "id": "xzirqj31aikg6c0j",
+          "name": "bot j"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ดึง input text จาก JSON (ป้องกัน error ถ้า message หรือ text ไม่มี)\nconst inputText = $json?.message?.text || $json?.text || null;\n\n// ตรวจสอบว่า input เป็น string และไม่ว่าง\nif (!inputText || typeof inputText !== 'string' || inputText.trim() === '') {\n  return [\n    { \n      json: { \n        tradingPairSymbol: null, \n        type: 'invalid', \n        message: 'Input is empty or invalid.' \n      } \n    }\n  ];\n}\n\n// Trim whitespace และแปลงเป็น uppercase\nconst trimmedUpperText = inputText.trim().toUpperCase();\n\n// กำหนด crypto symbols\nconst cryptoSymbols = ['BTC', 'ETH', 'SOL', 'DOGE'];\n\n// กำหนด US Top 100 Stocks (ตัวอย่าง)\nconst usTopStocks = [\n  'AAPL','MSFT','AMZN','GOOGL','META','NVDA','BRK.B','TSLA','UNH','JNJ',\n  'V','XOM','WMT','PG','MA','JPM','LLY','HD','MRK','ABBV',\n  'CVX','KO','PEP','AVGO','COST','MCD','BAC','ADBE','NFLX','DIS',\n  'PFE','TMO','ORCL','CMCSA','ABT','DHR','WFC','ACN','VZ','NKE',\n  'QCOM','LIN','PM','INTC','MS','NEE','TXN','BMY','RTX','UPS',\n  'SCHW','IBM','HON','AMGN','UNP','LOW','CAT','SPGI','GS','BLK',\n  'GE','AMD','ISRG','MDT','AMAT','PLD','DE','LMT','CVS','AXP',\n  'CB','C','SYK','ADP','ZTS','VRTX','INTU','ELV','T','GILD',\n  'USB','BKNG','REGN','DUK','MMC','MO','PNC','BA','SO','CI',\n  'TGT','CL','BDX','FDX','AON','APD','ADI','GM','WM','ECL'\n];\n\n// ตัวแปร output\nlet tradingPairSymbol = null;\nlet type = '';\nlet message = '';\n\n// ตรวจสอบประเภท crypto\nif (cryptoSymbols.includes(trimmedUpperText) || cryptoSymbols.some(sym => trimmedUpperText === sym + 'USDT')) {\n  // ถ้า input ไม่มี USDT ต่อท้าย → ต่อ USDT\n  tradingPairSymbol = trimmedUpperText.endsWith('USDT') ? trimmedUpperText : trimmedUpperText + 'USDT';\n  type = 'crypto';\n  message = 'This is a crypto symbol and ready for Binance API.';\n} \n// ตรวจสอบ US stock\nelse if (usTopStocks.includes(trimmedUpperText)) {\n  tradingPairSymbol = null;\n  type = 'stock';\n  message = 'This is a US stock symbol. Use Stock API instead of Binance.';\n} \n// Invalid symbol\nelse {\n  tradingPairSymbol = null;\n  type = 'invalid';\n  message = 'Invalid symbol. Please enter a valid crypto or US stock.';\n}\n\n// คืนค่า output\nreturn [\n  {\n    json: {\n      tradingPairSymbol,\n      type,\n      input: trimmedUpperText,\n      message\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1728,
+        -496
+      ],
+      "id": "db540239-7ae3-4322-a695-878168d0cce7",
+      "name": "symbol"
+    },
+    {
+      "parameters": {
+        "height": 480,
+        "width": 448
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1440,
+        -656
+      ],
+      "typeVersion": 1,
+      "id": "8df02883-89b7-4788-b0fa-7c5b6f426083",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "height": 1136,
+        "width": 688,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1968,
+        -976
+      ],
+      "typeVersion": 1,
+      "id": "d6d06bd4-bd91-4dd0-9858-0831419e4ac0",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "height": 1152,
+        "width": 640,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2784,
+        -992
+      ],
+      "typeVersion": 1,
+      "id": "859e16b0-1324-4ece-9f25-7f839bb91825",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "height": 1184,
+        "width": 976,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3600,
+        -1024
+      ],
+      "typeVersion": 1,
+      "id": "e7e757db-2d69-4593-8699-2690250dff07",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "amount": 23
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        -352
+      ],
+      "id": "3908abbb-09cd-41f2-8b9a-62d0dba08893",
+      "name": "Wait",
+      "webhookId": "2d060976-03e2-4577-b9b5-33893e797fa3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.chart-img.com/v2/tradingview/advanced-chart",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "7OPxI5D3rm2uitKZeIF0d5Lgi3iA6Fiu4HnMTno5"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"chart\": {\n    \"type\": \"line\",\n    \"data\": {\n      \"labels\": [\"1h\", \"2h\", \"3h\", \"4h\", \"5h\"],\n      \"datasets\": [\n        {\n          \"label\": \"BTC/USDT\",\n          \"data\": [68000, 68250, 67900, 68500, 69000],\n          \"borderColor\": \"rgb(0,255,0)\",\n          \"fill\": false\n        },\n        {\n          \"label\": \"ETH/USDT\",\n          \"data\": [4300, 4350, 4280, 4400, 4450],\n          \"borderColor\": \"rgb(255,0,0)\",\n          \"fill\": false\n        },\n        {\n          \"label\": \"SOL/USDT\",\n          \"data\": [180, 185, 178, 190, 195],\n          \"borderColor\": \"rgb(0,0,255)\",\n          \"fill\": false\n        },\n        {\n          \"label\": \"DOGE/USDT\",\n          \"data\": [0.24, 0.25, 0.23, 0.26, 0.27],\n          \"borderColor\": \"rgb(255,165,0)\",\n          \"fill\": false\n        }\n      ]\n    },\n    \"options\": {\n      \"title\": {\n        \"display\": true,\n        \"text\": \"Crypto Prices (1h)\"\n      }\n    }\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2144,
+        -64
+      ],
+      "id": "f781f828-664f-49f5-833d-b01fe8df5e4e",
+      "name": "HTTP Request4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = $input.all();\nconst transformedData = [];\n\nfor (const item of inputData) {\n  const json = item.json;\n  const timeframe = json.timeframe;\n\n  const candlesArray = [];\n\n  // ถ้า json.candles เป็น array\n  if (Array.isArray(json.candles)) {\n    for (let i = 0; i <= 11; i++) {\n      candlesArray.push(json.candles[i] ?? null);\n    }\n  }\n\n  transformedData.push({\n    json: {\n      timeframe,\n      candles: candlesArray\n    }\n  });\n}\n\nreturn transformedData;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3120,
+        -848
+      ],
+      "id": "44d7bb8c-56e9-4709-8f32-65b77eaaa3a0",
+      "name": "Code"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "1m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "15m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "1h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "1d",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1m": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "15m": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "1h": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "1d": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "news": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "symbol",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "symbol": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "news",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "29298723-6154-4300-a9f6-2089f8f7b639",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3660a97a23a1bd3bb8dd2e8b9c457fe8b6d7a94203d4621a2a0016df1b699637"
+  },
+  "id": "l3jnFhGo6k2MCYFk",
+  "tags": []
+}
